@@ -1,0 +1,51 @@
+<zk>
+    <hlayout id="main" sclass="main-html" spacing="0" height="100%"
+             viewModel="@id('vm')@init('com.viettelpost.model.BodyModel')">
+        <include src="assets/view/siderbar/siderbar.zul" vflex="1"/>
+        <vlayout sclass="right-block" vflex="1" hflex="1"
+                 style="overflow-x: hidden; overflow-y: auto" spacing="0">
+            <div sclass="row">
+                <div sclass="col-md-4 top-left-block">
+                    <menubar>
+                        <menu label="${c:l('menu.home')}"/>
+                        <menu iconSclass="z-icon-hand-o-right" style="color:#00706B!important"/>
+                        <menu label="@load(vm.moduleName)" style="color:#00706B!important"/>
+                    </menubar>
+                </div>
+                <div sclass="col-md-8 top-right-block">
+                    <hlayout sclass="z-valign-middle" valign="center"
+                             style="float: right; padding-right: 15px; margin-top: 7px;">
+                        <image src="assets/imgs/thumbnail.jpg" style="border-radius: 30px;"/>
+                        <vlayout style="float:right">
+                            <label value="@load(vm.user.name)" tooltiptext="@load(vm.user.name)"
+                                   style="color:#00706B!important"/>
+                            <label value="Đăng xuất"
+                                   style="color: #999999; float:right;font-size: 11px;cursor: pointer;"
+                                   onClick="Sessions.getCurrent().invalidate();; Executions.sendRedirect(&quot;/&quot;);"/>
+                        </vlayout>
+                    </hlayout>
+                </div>
+            </div>
+            <include id="bodyContent" src="@load(vm.url)"
+                     style="overflow: hidden; margin-top:1px; border: 1px solid #d6d6d6"/>
+        </vlayout>
+    </hlayout>
+    <script>
+        function reloadDiv() {
+        changeSize();
+        }
+
+        function changeSize(){
+        document.getElementsByClassName('right-block')[0].scrollTop = 0;
+        setTimeout(function(){
+        zUtl.fireSized(zk.Widget.$(jq('$main')));
+        }, 400);
+        }
+
+        $(document).ready(function(){
+        $(window).resize(function(){
+        changeSize();
+        });
+        });
+    </script>
+</zk>

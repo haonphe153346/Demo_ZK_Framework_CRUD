@@ -1,0 +1,44 @@
+
+
+<zk>
+    <?meta http-equiv="Expires" content="-1"?>
+    <?meta http-equiv="Pragma" content="no-cache"?>
+    <?meta chaset="utf-8"?>
+    <?page title="Téc"?>
+    <?link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen"?>
+    <?link href="assets/css/main.css" rel="stylesheet" type="text/css" media="screen"?>
+    <?link href="assets/css/style.css" rel="stylesheet" type="text/css" media="screen"?>
+    <?link href="assets/css/viettelpost.css" rel="stylesheet" type="text/css" media="screen"?>
+    <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+            <window title="FORM LOGIN ZK FRAMEWORK" border="normal" position="center" mode="overlapped" id="wndlogin" use="controller.UsersController">
+                <div width="400px" height="200px">
+                    <grid>
+                        <columns>
+                            <column width="50%"></column>
+                            <column width="50%"></column>
+                        </columns>
+                        <rows>
+                            <row>
+                                <label value="USER ID"></label>
+                                <label value="PASSWORD"></label>
+                            </row>
+                            <row>
+                                <textbox id="iduser"></textbox>
+                                <textbox id="pass" type="password"> </textbox>
+                            </row>
+                            <row>
+                                <button id="submit" label="LOGIN"
+                                        onClick="wndlogin.Login(iduser.getValue(),pass.getValue())"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </div>
+            </window>
+
+    <script src="assets/js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="assets/js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/js/jquery-blockui/jquery.blockui.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/chart/loader.js"></script>
+</zk>

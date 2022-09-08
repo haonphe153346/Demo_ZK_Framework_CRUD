@@ -1,0 +1,27 @@
+<zk xmlns:x="xhtml">
+	<x:h1 class="title"><x:text value="@load(currentPage.title)"/></x:h1>
+	<x:h2 class="subTitle"><x:text value="@load(currentPage.subTitle)"/></x:h2>
+
+	<x:p>
+		Orders with status "<label value="@load(currentPage.data)"/>"
+	</x:p>
+
+	<listbox status="@ref(currentPage.data)">
+		<listitem>
+			<listcell label="order 1"/>
+			<listcell label="@load(status)"/>
+		</listitem>
+		<listitem>
+			<listcell label="order 2"/>
+			<listcell label="@load(status)"/>
+		</listitem>
+		<listitem>
+			<listcell label="order 3"/>
+			<listcell label="@load(status)"/>
+		</listitem>
+		<listitem>
+			<listcell label="order 4"/>
+			<listcell label="@load(status)"/>
+		</listitem>
+	</listbox>
+</zk>

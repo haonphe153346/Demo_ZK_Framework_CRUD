@@ -1,0 +1,7 @@
+<zk xmlns:x="xhtml">
+	<x:h1 class="title"><x:text value="@load(currentPage.title)"/></x:h1>
+	<x:h2 class="subTitle"><x:text value="@load(currentPage.subTitle)"/></x:h2>
+	<x:p>
+		Founded in 2009, ZK’s Pizza is now one of the largest chains of pizzerias in the country, with more than 150 locations from the East to West.
+	</x:p>
+</zk>

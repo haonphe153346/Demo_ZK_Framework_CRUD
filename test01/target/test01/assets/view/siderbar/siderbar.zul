@@ -1,0 +1,23 @@
+<zk>
+    <div id="siderbar" sclass="@bind(vm.closed?'siderbar-deactive':'siderbar')">
+        <hbox id="htop" sclass="htop" spacing="0">
+            <image sclass="@bind(vm.closed?'z-icon img-closed-expand':'z-icon img-closed')"
+                   src="@bind(vm.closed?'assets/imgs/icon-mobile-menu.svg':'assets/imgs/icon-arow-left.svg')"
+                   onClick="@command('closedClick')"/>
+            <image sclass="img-home" src="assets/imgs/logo.png" onClick="Executions.sendRedirect(&quot;/&quot;);"/>
+        </hbox>
+        <menubar id="mbar" orient="vertical"
+                 children="@bind(vm.nodes) @template(empty each.listChildren ? 'menuitem' : 'menu')">
+            <template name="menu" var="node">
+                <menu label="@bind(node.name)" tooltiptext="@bind(node.name)">
+                    <menupopup style="min-width:200px"
+                               children="@bind(node.listChildren) @template(empty each.listChildren ? 'menuitem' : 'menu')"/>
+                </menu>
+            </template>
+            <template name="menuitem" var="node">
+                <menuitem label="@bind(node.name)" tooltiptext="@bind(node.name)"
+                          onClick="@command('menuClicked', node=node)"/>
+            </template>
+        </menubar>
+    </div>
+</zk>

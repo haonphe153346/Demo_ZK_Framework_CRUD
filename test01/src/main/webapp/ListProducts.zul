@@ -1,0 +1,141 @@
+<zk>
+
+
+
+    <?meta http-equiv="Expires" content="-1"?>
+    <?meta http-equiv="Pragma" content="no-cache"?>
+    <?meta chaset="utf-8"?>
+    <?page title="Téc"?>
+    <?link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen"?>
+    <?link href="assets/css/main.css" rel="stylesheet" type="text/css" media="screen"?>
+    <?link href="assets/css/style.css" rel="stylesheet" type="text/css" media="screen"?>
+    <?link href="assets/css/viettelpost.css" rel="stylesheet" type="text/css" media="screen"?>
+    <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+    <zscript deferred="true">
+        String tname = org.zkoss.zul.theme.Themes.getCurrentTheme();
+        String bgStyle = "background: " + ("sapphire".equals(tname) ? "#C5E6EF" : "#F7F7F7");
+        b.setStyle(bgStyle);
+        n.setStyle(bgStyle);
+        w.setStyle(bgStyle);
+    </zscript>
+
+    <borderlayout id="b" vflex="1">
+    <north id="n" size="80px" border="0">
+        <div>
+            <div style="float:right">
+                <textbox sclass="demo-search-inp"/><separator orient="vertical"/><button label="Search Site"/>
+            </div>
+            <image style="padding:0 10px;" src="/img/ZK-Logo.gif"/>
+            <label style="position:relative; padding-left: 50px; font-size:24px;color:#008BB6;font-weight:bold;"
+                   value="Project ZK"/>
+
+        </div>
+
+    </north>
+    <!-- Sidebar -->
+    <west id="w" width="250px" border="0" splittable="true" margins="0,5,0,0" autoscroll="true">
+
+        <div style="text-align: center;">
+            <a href="/index.zul"><button type="button" sclass="btn btn-danger">LOGOUT</button></a>
+
+            <panel width="100%" border="normal" title="Menu">
+                <panelchildren style="padding:5px;">
+                    <vbox>
+                        <toolbarbutton href="/home.zul" label="Home"/>
+                        <toolbarbutton href="/ListProducts.zul" label="Manager Products"/>
+                        <toolbarbutton href="/ListUsers.zul" label="Manager Users"/>
+                        <toolbarbutton href="/ListOrders.zul"  label="Manager Orders"/>
+                        <toolbarbutton href="/ListCategory.zul"  label="Manager Category"/>
+                    </vbox>
+                </panelchildren>
+            </panel>
+            <panel width="100%" border="normal" style="margin-top:20px;" title="Project Goals">
+                <panelchildren>
+                    <html>
+                        &lt;ul&gt;
+                        &lt;li&gt;Simple and Rich&lt;/li&gt;
+                        &lt;li&gt;Power and Flexible&lt;/li&gt;
+                        &lt;li&gt;Direct RIA&lt;/li&gt;
+                        &lt;/ul&gt;
+                    </html>
+                </panelchildren>
+            </panel>
+        </div>
+    </west>
+        <center>
+            <window id="wnP" apply="controller.ProductsController">
+
+                <div id="divProduct">
+
+                </div>
+
+
+                <grid id="pro" width="100%" model="${$composer.getAllProduct()}" mold="paging" pageSize="10">
+                    <auxhead>
+                        <auxheader colspan="3" class="topic">Contributor List</auxheader>
+                    </auxhead>
+
+                    <columns>
+                        <column label="Title (Sort Alphabetically)" width="180px" align="center"
+                                sort="auto(product_id)" />
+
+                        <column label="IMAGE (Sort Numerically)" width="180px" align="center"
+                                sort="auto(product_image)" />
+                        <column label="Full Name (Sort Alphabetically by First Name and Last Name)" align="center"
+                                sort="auto(product_name)" />
+
+                        <column label="Extension (Sort Numerically)" width="180px" align="center"
+                                sort="auto(category_id)" />
+                        <column label="EDIT" width="180px" align="center"
+                        />
+                        <column label="DELETE" width="180px" align="center"
+                        />
+                    </columns>
+                    <template name="model">
+                        <row>
+                            <property name="jdbcUrl" value="jdbc:oracle:thin:@10.60.117.73:1521:evtp"/>
+                            <property name="user" value="ERP_WALLET"/>
+                            <property name="password" value="Cntt#2018#"/>
+                            <textbox inplace="true" constraint="no empty" value="${each.product_id}"/>
+                            <label value="${each.product_id}" />
+                            <image src="/assets/image/${each.product_image}" width="30%"  height="30%"/>
+                            <label value="${each.product_name}" />
+                            <label value="${each.category_id}" />
+                            <a href="/login.zul">
+                                <button>EDIT</button>
+                            </a>
+                            <button type="button" sclass="btn btn-danger">DELETE</button>
+                        </row>
+                    </template>
+
+
+                </grid>
+
+
+            </window>
+        </center>
+    <east width="150px" title="Quick Links" margins="0,5,5,0" collapsible="true" autoscroll="true">
+        <html>
+            &lt;ul&gt;
+            &lt;li&gt;Tutorial&lt;/li&gt;
+            &lt;li&gt;Docs&lt;/li&gt;
+            &lt;li&gt;ZK vs GWT&lt;/li&gt;
+            &lt;li&gt;ZK vs Ajax JSF&lt;/li&gt;
+            &lt;li&gt;Forum&lt;/li&gt;
+            &lt;li&gt;FAQ&lt;/li&gt;
+            &lt;li&gt;Contact us&lt;/li&gt;
+            &lt;/ul&gt;
+        </html>
+    </east>
+    </borderlayout>
+
+
+
+    <script src="assets/js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="assets/js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/js/jquery-blockui/jquery.blockui.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/chart/loader.js"></script>
+
+</zk>

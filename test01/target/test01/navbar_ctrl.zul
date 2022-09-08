@@ -1,0 +1,22 @@
+<zk>
+	<radiogroup>
+		<attribute name="onCheck"><![CDATA[
+			String orient = self.getSelectedItem().getValue();
+			navbar.setOrient(orient);
+			container.setSclass(orient);
+		]]></attribute>
+		<space height="20px"/>
+		<vlayout>
+			<label value="Orientation:"/>
+			<radio label="horizontal" value="horizontal" />
+			<radio label="vertical" value="vertical" checked="true"/>
+		</vlayout>
+	</radiogroup>
+	<separator spacing="15px"></separator>
+	<checkbox label="Collapsed" checked="false">
+		<attribute name="onCheck"><![CDATA[
+			navbar.setCollapsed(event.isChecked());
+			contentInclude.setSclass(event.isChecked() ? "content collapsed" : "content");
+		]]></attribute>
+	</checkbox>
+</zk>

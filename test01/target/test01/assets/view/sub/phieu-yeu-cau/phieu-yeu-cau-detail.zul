@@ -1,0 +1,70 @@
+<zk>
+    <?component name="vttext" macroURI="/assets/controls/custom/vtinputtext.zul" class="com.viettelpost.macros.VtInputText"?>
+    <?component name="vtdate" macroURI="/assets/controls/custom/vtinputdate.zul" class="com.viettelpost.macros.VtInputDate"?>
+    <?component name="vtcombo" macroURI="/assets/controls/custom/vtselectbox.zul" class="com.viettelpost.macros.VtSelectbox"?>
+    <window apply="">
+        <div sclass="panel-body">
+            <div sclass="row">
+                <div sclass="col-md-12">
+                    <tabbox id="tbbPyc" hflex="1">
+                        <tabs>
+                            <tab label="Tất cả"/>
+                            <tab label="Mới"/>
+                            <tab label="Ước lượng"/>
+                            <tab label="Đang thực hiện"/>
+                            <tab label="Chuẩn bị Golive"/>
+                            <tab label="Done"/>
+                        </tabs>
+                        <tabpanels>
+                            <tabpanel>
+                                <listbox id="lbxData"
+                                         emptyMessage="Không tìm thấy dữ liệu phù hợp"
+                                         nonselectableTags="*">
+                                    <auxhead>
+                                        <auxheader/>
+                                        <auxheader colspan="8" align="center">Thông tin Phiếu yêu cầu</auxheader>
+                                        <auxheader colspan="3" align="center">Ước lượng nỗ lực(MH)</auxheader>
+                                        <auxheader colspan="2" align="center">Ưu tiên</auxheader>
+                                    </auxhead>
+                                    <listhead>
+                                        <listheader label="STT" hflex="min"/>
+                                        <listheader label="Mã" hflex="min"/>
+                                        <listheader label="Tên"/>
+                                        <listheader label="Dự án" hflex="min"/>
+                                        <listheader label="Ngày tạo"/>
+                                        <listheader label="Người tạo"/>
+                                        <listheader label="Đơn vị yêu cầu"/>
+                                        <listheader label="Phụ trách"/>
+                                        <listheader label="Trạng thái"/>
+                                        <listheader label="Giải pháp" hflex="min" align="right"/>
+                                        <listheader label="Phát triển" hflex="min" align="right"/>
+                                        <listheader label="Kiểm thử" hflex="min" align="right"/>
+                                        <listheader label="Mong muốn" hflex="min" align="right"/>
+                                        <listheader label="Chốt" hflex="min" align="right"/>
+                                    </listhead>
+                                    <template name="model">
+                                        <listitem>
+                                            <listcell label="${forEachStatus.index +1}"/>
+                                            <listcell label="${each.code}"/>
+                                            <listcell label="${each.name}"/>
+                                            <listcell label="${each.projects}"/>
+                                            <listcell label="${each.createDept}"/>
+                                            <listcell label="${each.assigneeName}"/>
+                                            <listcell label="${$composer.formatDateTime(each.createDate)}"/>
+                                            <listcell label="${each.createBy}"/>
+                                            <listcell label="${$composer.formatNumber(each.estBA, 2)}"/>
+                                            <listcell label="${$composer.formatNumber(each.estDev, 2)}"/>
+                                            <listcell label="${$composer.formatNumber(each.estTest, 2)}"/>
+                                            <listcell label="${each.pos}"/>
+                                            <listcell label="${each.lastPos}"/>
+                                        </listitem>
+                                    </template>
+                                </listbox>
+                            </tabpanel>
+                        </tabpanels>
+                    </tabbox>
+                </div>
+            </div>
+        </div>
+    </window>
+</zk>

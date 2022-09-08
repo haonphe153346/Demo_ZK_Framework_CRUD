@@ -1,0 +1,29 @@
+<zk xmlns:x="xhtml">
+	<x:h1 class="title"><x:text value="@load(currentPage.title)"/></x:h1>
+	<x:h2 class="subTitle"><x:text value="@load(currentPage.subTitle)"/></x:h2>
+
+	<x:p>
+		A list of "<label value="@load(currentPage.data)"/>" customers who have membership.
+	</x:p>
+
+	<listbox status="@ref(currentPage.data eq 'active' ? true : false)">
+		<listitem>
+			<listcell label="customer 1"/>
+			<listcell>
+				<checkbox checked="@load(status)"/>
+			</listcell>
+		</listitem>
+		<listitem>
+			<listcell label="customer 2"/>
+			<listcell>
+				<checkbox checked="@load(status)"/>
+			</listcell>
+		</listitem>
+		<listitem>
+			<listcell label="customer 3"/>
+			<listcell>
+				<checkbox checked="@load(status)"/>
+			</listcell>
+		</listitem>
+	</listbox>
+</zk>

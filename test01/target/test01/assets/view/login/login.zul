@@ -1,0 +1,79 @@
+<zk>
+    <style>
+        .z-grid-odd>.z-row-inner, .z-grid-odd>.z-cell{
+        background: transparent;
+        }
+        .z-row{
+        padding: 0 15px;
+        }
+        .z-combobox-input{
+        height:100%
+        }
+    </style>
+    <?meta http-equiv="Expires" content="-1"?>
+    <?meta http-equiv="Pragma" content="no-cache"?>
+    <?meta chaset="utf-8"?>
+    <?page title="Kế hoạch - Viettelpost"?>
+    <?link rel="shortcut icon" type="image/x-icon" href="assets/imgs/favicon2.ico"?>
+    <?link rel="icon" type="image/x-icon" href="assets/imgs/favicon2.ico"?>
+    <?link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen"?>
+    <?link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css"?>
+    <?link href="assets/css/main.css" rel="stylesheet" type="text/css"?>
+    <?link href="assets/css/style.css" rel="stylesheet" type="text/css"?>
+    <?link href="assets/css/viettelpost.css" rel="stylesheet" type="text/css"?>
+    <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+    <hbox id="loginPage" hflex="1" vflex="1" align="center" sclass="z-bg-img"
+          viewModel="@id('vm')@init('com.viettelpost.model.LoginModel')"
+          pack="center" spacing="20px">
+        <vlayout width="100%" vflex="auto" sclass="z-login-box">
+            <div sclass="row" style="margin-bottom: 0!important;">
+                <div sclass="logo col-md-12" style="text-align:center!important; padding-top:10px">
+                    <image src="assets/imgs/logo2.png"
+                           width="100%" height="100%"/>
+                </div>
+            </div>
+            <div sclass="row">
+                <div sclass="col-md-12" style="text-align:center!important">
+                    <label value="Đăng nhập hệ thống" hflex="1"
+                           style="color: #ed1b2f;font-size: 18px;padding: 5px;text-transform: uppercase;text-rendering: optimizelegibility;font-family: CoreSansGS;width: 420px;font-weight: bold;"/>
+                </div>
+            </div>
+            <div sclass="row" style="margin-bottom: 15px !important;">
+                <div sclass="col-md-12">
+                    <textbox placeholder="Nhập tài khoản" maxlength="100"
+                             sclass="z-login-control"
+                             value="@bind(vm.account)"
+                             focus="@load(vm.focus eq 1)"
+                             onOK="@command('login')"
+                             width="100%"/>
+                </div>
+            </div>
+            <div sclass="row" style="margin-bottom: 15px !important;">
+                <div sclass="col-md-12">
+                    <textbox width="100%" sclass="z-login-control" maxlength="50"
+                             focus="@load(vm.focus eq 2)" type="password"
+                             value="@bind(vm.password)"
+                             onOK="@command('login')"
+                             placeholder="Nhập mật khẩu"/>
+                </div>
+            </div>
+            <div sclass="row" style="margin-bottom:15px!important">
+                <div sclass="col-md-12">
+                    <button label="Đăng nhập" autodisable="self" style="background-color:#ed1b2f"
+                            zclass="z-button z-button-primary"
+                            onClick="@command('login')"
+                            sclass="btn btn-block z-login-control"/>
+                </div>
+            </div>
+            <div sclass="row" style="color:red;margin-bottom:0!important">
+                <div sclass="col-md-12">
+                    <label id="message" value="@load(vm.message)" hflex="1"/>
+                </div>
+            </div>
+        </vlayout>
+    </hbox>
+    <script src="assets/js/bi-slider.js"></script>
+    <script src="assets/js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="assets/js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</zk>

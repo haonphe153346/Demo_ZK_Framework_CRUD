@@ -1,0 +1,7 @@
+<zk xmlns:x="xhtml">
+	<x:h1 class="title"><x:text value="@load(currentPage.title)"/></x:h1>
+	<x:h2 class="subTitle"><x:text value="@load(currentPage.subTitle)"/></x:h2>
+	<x:p>
+		Here you'll find a selection of dozens of unique and delicious menu items.
+	</x:p>
+</zk>

@@ -1,0 +1,39 @@
+<zk>
+    <?component name="vttext" macroURI="/assets/controls/custom/vtinputtext.zul" class="com.viettelpost.macros.VtInputText"?>
+    <?component name="vtdate" macroURI="/assets/controls/custom/vtinputdate.zul" class="com.viettelpost.macros.VtInputDate"?>
+    <?component name="vtcombo" macroURI="/assets/controls/custom/vtselectbox.zul" class="com.viettelpost.macros.VtSelectbox"?>
+    <window apply="com.viettelpost.controler.CsdlNlControler">
+        <div sclass="panel-body">
+            <div sclass="row">
+                <div sclass="col-md-12">
+                    <listbox id="lbxData"
+                             emptyMessage="Không tìm thấy dữ liệu phù hợp"
+                             nonselectableTags="*">
+                        <listhead sizable="true">
+                            <listheader label="STT" hflex="min"/>
+                            <listheader label="Mã chức năng" hflex="min"/>
+                            <listheader label="Tên chức năng"/>
+                            <listheader label="Kỹ năng" hflex="min"/>
+                            <listheader label="Mô tả"/>
+                            <listheader label="Nghiệp vụ" hflex="min" align="right"/>
+                            <listheader label="Phát triển" hflex="min" align="right"/>
+                            <listheader label="Kiểm thử" hflex="min" align="right"/>
+                        </listhead>
+                        <template name="model">
+                            <listitem>
+                                <listcell label="${forEachStatus.index +1}"/>
+                                <listcell label="${each.code}"/>
+                                <listcell label="${each.name}"/>
+                                <listcell label="${each.skill}"/>
+                                <listcell label="${each.description}"/>
+                                <listcell label="${$composer.formatNumber(each.ba, 2)}"/>
+                                <listcell label="${$composer.formatNumber(each.dev, 2)}"/>
+                                <listcell label="${$composer.formatNumber(each.tester, 2)}"/>
+                            </listitem>
+                        </template>
+                    </listbox>
+                </div>
+            </div>
+        </div>
+    </window>
+</zk>
